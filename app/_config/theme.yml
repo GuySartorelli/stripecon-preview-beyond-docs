@@ -1,5 +1,5 @@
 ---
-Name: mytheme
+Name: project-themes
 ---
 SilverStripe\View\SSViewer:
   themes:
