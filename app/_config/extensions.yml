@@ -1,0 +1,6 @@
+---
+Name: project-extensions
+---
+SilverStripe\CMS\Model\SiteTree:
+  extensions:
+    - DNADesign\Elemental\Extensions\ElementalPageExtension

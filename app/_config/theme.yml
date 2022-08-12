@@ -4,5 +4,6 @@ Name: project-themes
 SilverStripe\View\SSViewer:
   themes:
     - '$public'
+    - 'demo'
     - 'simple'
     - '$default'
