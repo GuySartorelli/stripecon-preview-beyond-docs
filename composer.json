@@ -1,0 +1,36 @@
+{
+    "name": "guysartorelli/stripecon-preview-beyond-docs",
+    "description": "Demonstration of various use-cases for the Silverstripe CMS preview panel",
+    "require": {
+        "php": "^7.4 || ^8.0",
+        "silverstripe/recipe-plugin": "^1.2",
+        "silverstripe/recipe-cms": "^4.11.0",
+        "silverstripe-themes/simple": "^3.2.0",
+        "silverstripe/login-forms": "^4.7.0"
+    },
+    "extra": {
+        "resources-dir": "_resources",
+        "project-files-installed": [
+            "app/.htaccess",
+            "app/_config.php",
+            "app/_config/mimevalidator.yml",
+            "app/_config/mysite.yml",
+            "app/src/Page.php",
+            "app/src/PageController.php"
+        ],
+        "public-files-installed": [
+            ".htaccess",
+            "index.php",
+            "web.config"
+        ]
+    },
+    "config": {
+        "process-timeout": 600,
+        "allow-plugins": {
+            "composer/installers": true,
+            "silverstripe/recipe-plugin": true,
+            "silverstripe/vendor-plugin": true
+        }
+    },
+    "prefer-stable": true
+}

@@ -1,0 +1,13 @@
+/silverstripe-cache/
+/.env
+/vendor/
+/themes/simple/
+/_resources/
+/public/_resources/
+/public/_graphql/
+/.graphql-generated/
+/silverstripe.log
+/.vscode/
+/app/_config/log.yml
+/app/_config/mailhog.yml
+/app/_config/no-https.yml
