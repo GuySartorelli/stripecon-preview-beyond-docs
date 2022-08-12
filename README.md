@@ -3,6 +3,8 @@
 ## TODO
 
 - set up basic examples from documentation
+  - On a page
+- set up an example that can be previewed from a modeladmin OR on a page
 - set up previewable email templates
 - set up previewable PDF templates
 - set up advanced preview options
@@ -17,6 +19,7 @@
 
 ## Stretch goals
 
+- Make the demonstrations look nice (theming)
 - have some miniature set of slides (or even just an opening presentation page) inside the app
   - Who I am
   - Demo time
