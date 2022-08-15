@@ -1,0 +1,6 @@
+---
+Name: project-routes
+---
+SilverStripe\Control\Director:
+  rules:
+    'regions': 'App\PerDocs\ModelAsPage\RegionController'

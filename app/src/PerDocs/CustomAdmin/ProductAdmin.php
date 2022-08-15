@@ -3,6 +3,7 @@
 namespace App\PerDocs\CustomAdmin;
 
 use SilverStripe\Admin\ModelAdmin;
+use SilverStripe\ORM\FieldType\DBHTMLText;
 use SilverStripe\View\SSViewer;
 
 class ProductAdmin extends ModelAdmin
@@ -23,13 +24,13 @@ class ProductAdmin extends ModelAdmin
         Product::class,
     ];
 
-    public function cmsPreview()
+    public function cmsPreview(): DBHTMLText
     {
         $id = $this->urlParams['ID'];
         $obj = $this->modelClass::get_by_id($id);
         if (!$obj || !$obj->exists()) {
             // NOTE: This will redirect you to the edit form for the "Not Found" page if one exists.
-            return $this->httpError(404);
+            $this->httpError(404);
         }
 
         // Allow use of front-end themes temporarily.

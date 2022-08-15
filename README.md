@@ -2,8 +2,6 @@
 
 ## TODO
 
-- set up basic examples from documentation
-  - On a page
 - set up an example that can be previewed from a modeladmin OR on a page
 - set up previewable email templates
 - set up previewable PDF templates
