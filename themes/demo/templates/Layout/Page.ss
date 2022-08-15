@@ -9,3 +9,5 @@
 		$Form
 		$CommentsForm
 </div>
+
+<% if $HasPerm('CMS_ACCESS') %>$SilverStripeNavigator<% end_if %>
