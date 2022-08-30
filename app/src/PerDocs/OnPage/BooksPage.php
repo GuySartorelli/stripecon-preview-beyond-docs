@@ -16,6 +16,10 @@ class BooksPage extends Page
         'Books' => Book::class,
     ];
 
+    private static array $owns = [
+        'Books',
+    ];
+
     public function getCMSFields()
     {
         $fields = parent::getCMSFields();
