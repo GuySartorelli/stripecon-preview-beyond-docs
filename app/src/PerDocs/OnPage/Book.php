@@ -13,7 +13,7 @@ class Book extends DataObject implements CMSPreviewable
 
     private static $db = [
         'Title' => 'Varchar(255)',
-        'Author' => 'Varchar(255)',
+        'AuthorName' => 'Varchar(255)',
         'Genre' => 'Varchar(255)',
     ];
 
@@ -23,7 +23,7 @@ class Book extends DataObject implements CMSPreviewable
 
     private static array $summary_fields = [
         'Title',
-        'Author',
+        'AuthorName',
         'Genre',
     ];
 

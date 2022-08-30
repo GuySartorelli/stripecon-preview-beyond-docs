@@ -9,7 +9,7 @@
             <% loop $Books %>
                 <div id="$Anchor">
                     <h2>$Title</h2>
-                    <strong>$Author</strong><br>
+                    <strong>$AuthorName</strong><br>
                     <em>$Genre</em>
                 </div>
             <% end_loop %>
