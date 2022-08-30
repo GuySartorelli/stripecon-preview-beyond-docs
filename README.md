@@ -1,8 +1,15 @@
 # Stripecon Lightning Talk 2022: CMS Preview - beyond the documentation
 
+## Done
+
+- Basic examples from documentation
+  - In a ModelAdmin
+  - On a page
+  - Model as a Page
+- Example that can be previewed from a modeladmin OR on a page
+
 ## TODO
 
-- set up an example that can be previewed from a modeladmin OR on a page
 - set up previewable email templates
 - set up previewable PDF templates
 - set up advanced preview options
