@@ -79,12 +79,15 @@ class Property extends DataObject implements CMSPreviewable
     {
         // This isn't strictly necessary in this specific example,
         // but it makes sense to implement a useful value since this method is mandatory.
-        if (!$page = $this->Parent()) {
-            return null;
-        }
+        // Note that I'm using the admin, not the page. The admin will always exist but this
+        // property could exist without a corresponding page.
+        $admin = PropertyAdmin::singleton();
+        $sanitisedClassname = str_replace('\\', '-', $this->ClassName);
         return Controller::join_links(
-            $page->CMSEditLink(),
-            'field/Books/item',
+            $admin->Link($sanitisedClassname),
+            'EditForm/field/',
+            $sanitisedClassname,
+            'item',
             $this->ID
         );
     }
