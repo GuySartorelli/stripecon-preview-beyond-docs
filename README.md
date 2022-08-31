@@ -10,12 +10,19 @@
 
 ## TODO
 
-- set up previewable email templates
 - set up previewable PDF templates
+  - Concrete PDF based on template
+    - On selecting the template, it updates content
+    - On selecting the template, the preview is refreshed
+    - On selecting the template, the DataItem dropdown source is refreshed
+  - Variables
+    - Some data source to get variable values from
 - set up advanced preview options
   - set an ID for the `DataObject` which is being used to substitute variables
   - select which out of several items on a page will be previewed
 - see if you can preview `SiteConfig`
+  - if so, see if there's some useful thing you can do here
+- see if you can have a preview panel in ModelAdmin at the gridfield level
   - if so, see if there's some useful thing you can do here
 - see if you can preview members or other things in the `SecurityAdmin`
   - if so, wee if there's some useful thing you can do here
@@ -24,6 +31,7 @@
 
 ## Stretch goals
 
+- Add lots of nice documentation in the code (phpdocs mostly) to help people navigate the examples
 - Make the demonstrations look nice (theming)
 - have some miniature set of slides (or even just an opening presentation page) inside the app
   - Who I am
