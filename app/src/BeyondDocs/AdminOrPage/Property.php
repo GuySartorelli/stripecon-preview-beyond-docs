@@ -1,6 +1,6 @@
 <?php
 
-namespace App\PerDocs\AdminOrPage;
+namespace App\BeyondDocs\AdminOrPage;
 
 use SilverStripe\Control\Controller;
 use SilverStripe\ORM\CMSPreviewable;
