@@ -25,6 +25,9 @@
             ".htaccess",
             "index.php",
             "web.config"
+        ],
+        "expose": [
+            "app/src/BeyondDocs/Pdf/javascript"
         ]
     },
     "config": {
