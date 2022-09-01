@@ -47,6 +47,8 @@ trait Pdf
 
     private function parseContent(string $content): string
     {
+        // NOTE: Somewhere in here you'd likely have some custom logic to convert variables in the content
+        // into concrete values from a given record. That goes well beyond the purpose of this demo though.
         $content = $this->encodeImages($this->Content);
         $content = ShortcodeParser::get_active()->parse($content);
         return HTTP::absoluteURLs($content);

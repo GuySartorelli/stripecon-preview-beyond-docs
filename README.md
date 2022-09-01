@@ -11,12 +11,8 @@
 ## TODO
 
 - set up previewable PDF templates
-  - Concrete PDF based on template
-    - On selecting the template, it updates content
-    - On selecting the template, the preview is refreshed
-    - On selecting the template, the DataItem dropdown source is refreshed
-  - Variables
-    - Some data source to get variable values from
+  - have a list of clients with some pdfs that were already sent to them
+    - when viewing the client edit form maybe have the pdfs in the preview panel (collapsed by default with no preview, but click on some button and js fires to open the panel showing the pdfs)
 - set up advanced preview options
   - set an ID for the `DataObject` which is being used to substitute variables
   - select which out of several items on a page will be previewed
