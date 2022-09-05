@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "dd267aedc84dbdbe0f6ff6f8fc5b4db2",
+    "content-hash": "2114f683f92a78ee439a905adb377ba1",
     "packages": [
         {
             "name": "bramus/ansi-php",
@@ -771,16 +771,16 @@
         },
         {
             "name": "guysartorelli/silverstripe-gridfield-preview",
-            "version": "dev-main",
+            "version": "0.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GuySartorelli/silverstripe-gridfield-preview.git",
-                "reference": "3465ffafdf02bc4faaedc86228ab9156c185f63e"
+                "reference": "e3ffd40b559e3a079fd92cbc261c809975848480"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GuySartorelli/silverstripe-gridfield-preview/zipball/3465ffafdf02bc4faaedc86228ab9156c185f63e",
-                "reference": "3465ffafdf02bc4faaedc86228ab9156c185f63e",
+                "url": "https://api.github.com/repos/GuySartorelli/silverstripe-gridfield-preview/zipball/e3ffd40b559e3a079fd92cbc261c809975848480",
+                "reference": "e3ffd40b559e3a079fd92cbc261c809975848480",
                 "shasum": ""
             },
             "require": {
@@ -791,7 +791,6 @@
             "require-dev": {
                 "squizlabs/php_codesniffer": "^3.5"
             },
-            "default-branch": true,
             "type": "silverstripe-vendormodule",
             "extra": {
                 "expose": [
@@ -813,10 +812,10 @@
                 "silverstripe"
             ],
             "support": {
-                "source": "https://github.com/GuySartorelli/silverstripe-gridfield-preview/tree/main",
+                "source": "https://github.com/GuySartorelli/silverstripe-gridfield-preview/tree/0.1.0",
                 "issues": "https://github.com/GuySartorelli/silverstripe-gridfield-preview/issues"
             },
-            "time": "2022-09-05T05:31:39+00:00"
+            "time": "2022-09-05T06:04:17+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -6023,9 +6022,7 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "guysartorelli/silverstripe-gridfield-preview": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

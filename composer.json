@@ -16,7 +16,7 @@
         "dnadesign/silverstripe-elemental": "^4.9",
         "dnadesign/silverstripe-elemental-userforms": "^3.2",
         "mikehaertl/phpwkhtmltopdf": "^2.5",
-        "guysartorelli/silverstripe-gridfield-preview": "dev-main"
+        "guysartorelli/silverstripe-gridfield-preview": "^0.1"
     },
     "extra": {
         "resources-dir": "_resources",
