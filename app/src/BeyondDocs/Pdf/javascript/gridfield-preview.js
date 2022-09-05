@@ -1,3 +1,9 @@
+/*
+    You obviously would want to put this in a more appropriate place for your project and to transpile it.
+    In this case I've put it here because I want it to be REALLY clear what code goes with what functionality.
+    So keeping it together with the PHP makes it a lot easier for this demo code.
+*/
+
 (function($) {
   $.entwine('ss.preview', function($) {
     $('.cms-preview').entwine({
