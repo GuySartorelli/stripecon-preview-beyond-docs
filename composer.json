@@ -1,6 +1,12 @@
 {
     "name": "guysartorelli/stripecon-preview-beyond-docs",
     "description": "Demonstration of various use-cases for the Silverstripe CMS preview panel",
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git@github.com:GuySartorelli/silverstripe-gridfield-preview.git"
+        }
+    ],
     "require": {
         "php": "^7.4 || ^8.0",
         "silverstripe/recipe-plugin": "^1.2",
@@ -9,7 +15,8 @@
         "silverstripe/login-forms": "^4.7.0",
         "dnadesign/silverstripe-elemental": "^4.9",
         "dnadesign/silverstripe-elemental-userforms": "^3.2",
-        "mikehaertl/phpwkhtmltopdf": "^2.5"
+        "mikehaertl/phpwkhtmltopdf": "^2.5",
+        "guysartorelli/silverstripe-gridfield-preview": "dev-main"
     },
     "extra": {
         "resources-dir": "_resources",
