@@ -5,6 +5,16 @@
 
       /**
        * Override to ensure there is always a valid state available
+       * since we're dealing with a whole admin section rather than
+       * a specific record.
+       *
+       * Also forces our preview URL into the state - without this it
+       * would try to use the state's preview URL which in this case
+       * would be undefined.
+       *
+       * NOTE: This is unlikely to work as-is in a GridField inside
+       * some other CMSPreviewable object's edit form. You'd want to
+       * add in a way to get back to the original preview state.
        */
       _getNavigatorStates() {
         let states = this._super();
