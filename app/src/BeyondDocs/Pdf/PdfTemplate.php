@@ -20,7 +20,7 @@ class PdfTemplate extends DataObject implements CMSPreviewable
         'ShowTitleInHeader' => 'Boolean',
         'ShowPageNumbers' => 'Boolean',
         'Content' => 'HTMLText',
-        'DataSourceClass' => 'DBClassName',
+        'DataSourceClass' => 'Varchar',
     ];
 
     private static array $summary_fields = [
@@ -43,7 +43,7 @@ class PdfTemplate extends DataObject implements CMSPreviewable
                 DropdownField::create(
                 'DataSourceClass',
                 $this->fieldLabel('DataSourceClass'),
-                static::config()->get('data_source_classes'),
+                static::config()->get('data_source_classes')
             )
             ->setHasEmptyDefault(true)
             ->setDescription('The class of objects which will be used for variable substitution.')
