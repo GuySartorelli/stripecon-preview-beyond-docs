@@ -10,13 +10,21 @@
     "require": {
         "php": "^7.4 || ^8.0",
         "silverstripe/recipe-plugin": "^1.2",
-        "silverstripe/recipe-cms": "^4.11.0",
         "silverstripe-themes/simple": "^3.2.0",
         "silverstripe/login-forms": "^4.7.0",
         "dnadesign/silverstripe-elemental": "^4.9",
         "dnadesign/silverstripe-elemental-userforms": "^3.2",
         "mikehaertl/phpwkhtmltopdf": "^2.5",
-        "guysartorelli/silverstripe-gridfield-preview": "^0.1"
+        "guysartorelli/silverstripe-gridfield-preview": "^0.1",
+        "silverstripe/framework": "~4.11.0@stable",
+        "silverstripe/admin": "^1.11.0",
+        "silverstripe/cms": "^4.11.0",
+        "silverstripe/asset-admin": "^1.11.0",
+        "silverstripe/errorpage": "^1.11.0",
+        "silverstripe/versioned": "^1.11.0",
+        "silverstripe/assets": "~1.11.0@stable",
+        "silverstripe/config": "~1.4.0@stable",
+        "silverstripe/mimevalidator": "~2.4.0@stable"
     },
     "extra": {
         "resources-dir": "_resources",
@@ -35,7 +43,15 @@
         ],
         "expose": [
             "app/src/BeyondDocs/Pdf/javascript"
-        ]
+        ],
+        "project-dependencies-installed": {
+            "php": "^7.4 || ^8.0",
+            "silverstripe/assets": "~1.11.0@stable",
+            "silverstripe/config": "~1.4.0@stable",
+            "silverstripe/framework": "~4.11.0@stable",
+            "silverstripe/mimevalidator": "~2.4.0@stable",
+            "silverstripe/recipe-plugin": "^1.2"
+        }
     },
     "config": {
         "process-timeout": 600,
@@ -45,5 +61,8 @@
             "silverstripe/vendor-plugin": true
         }
     },
-    "prefer-stable": true
+    "prefer-stable": true,
+    "provide": {
+        "silverstripe/recipe-core": "4.11.0"
+    }
 }
