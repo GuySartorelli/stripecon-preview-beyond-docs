@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0e885761f4cdcbf39367003ac7959042",
+    "content-hash": "c4bdf55b4dadb4607bd4ded15bb7c388",
     "packages": [
         {
             "name": "bramus/ansi-php",
@@ -771,16 +771,16 @@
         },
         {
             "name": "guysartorelli/silverstripe-gridfield-preview",
-            "version": "0.1.1",
+            "version": "0.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GuySartorelli/silverstripe-gridfield-preview.git",
-                "reference": "c79102525cbe3c0635a49b3fc423ae0535448a83"
+                "reference": "b537ecf9077e956a5335b6a3b8cda8dc38645742"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GuySartorelli/silverstripe-gridfield-preview/zipball/c79102525cbe3c0635a49b3fc423ae0535448a83",
-                "reference": "c79102525cbe3c0635a49b3fc423ae0535448a83",
+                "url": "https://api.github.com/repos/GuySartorelli/silverstripe-gridfield-preview/zipball/b537ecf9077e956a5335b6a3b8cda8dc38645742",
+                "reference": "b537ecf9077e956a5335b6a3b8cda8dc38645742",
                 "shasum": ""
             },
             "require": {
@@ -812,10 +812,10 @@
                 "silverstripe"
             ],
             "support": {
-                "source": "https://github.com/GuySartorelli/silverstripe-gridfield-preview/tree/0.1.1",
+                "source": "https://github.com/GuySartorelli/silverstripe-gridfield-preview/tree/0.1.2",
                 "issues": "https://github.com/GuySartorelli/silverstripe-gridfield-preview/issues"
             },
-            "time": "2022-09-06T04:57:12+00:00"
+            "time": "2022-09-07T04:57:06+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -3304,55 +3304,6 @@
                 "source": "https://github.com/silverstripe/silverstripe-mimevalidator/tree/2.4.0"
             },
             "time": "2022-05-04T01:29:40+00:00"
-        },
-        {
-            "name": "silverstripe/recipe-core",
-            "version": "4.11.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/silverstripe/recipe-core.git",
-                "reference": "ef78531b274d123697f9a3da5b361372d63628fd"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe/recipe-core/zipball/ef78531b274d123697f9a3da5b361372d63628fd",
-                "reference": "ef78531b274d123697f9a3da5b361372d63628fd",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.4 || ^8.0",
-                "silverstripe/assets": "~1.11.0@stable",
-                "silverstripe/config": "~1.4.0@stable",
-                "silverstripe/framework": "~4.11.0@stable",
-                "silverstripe/mimevalidator": "~2.4.0@stable",
-                "silverstripe/recipe-plugin": "^1.2"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^9.5"
-            },
-            "type": "silverstripe-recipe",
-            "extra": {
-                "project-files": [
-                    "app/*"
-                ],
-                "public-files": [
-                    ".htaccess",
-                    "web.config",
-                    "index.php"
-                ],
-                "resources-dir": "_resources"
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "description": "SilverStripe framework-only core recipe",
-            "homepage": "http://silverstripe.org",
-            "support": {
-                "issues": "https://github.com/silverstripe/recipe-core/issues",
-                "source": "https://github.com/silverstripe/recipe-core/tree/4.11.0"
-            },
-            "time": "2022-06-28T03:06:34+00:00"
         },
         {
             "name": "silverstripe/recipe-plugin",
@@ -5844,7 +5795,12 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "silverstripe/framework": 0,
+        "silverstripe/assets": 0,
+        "silverstripe/config": 0,
+        "silverstripe/mimevalidator": 0
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
