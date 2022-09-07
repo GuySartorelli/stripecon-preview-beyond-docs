@@ -6,7 +6,7 @@ use InvalidArgumentException;
 use SilverStripe\Assets\File;
 use SilverStripe\Control\Controller;
 use SilverStripe\Control\HTTPResponse;
-use SilverStripe\Forms\FormAction;
+use SilverStripe\Forms\HiddenField;
 use SilverStripe\ORM\CMSPreviewable;
 use SilverStripe\ORM\DataObject;
 
@@ -29,11 +29,11 @@ class Client extends DataObject implements CMSPreviewable
         'Pdfs.Count' => 'Number of Pdfs'
     ];
 
-    private static bool $show_unversioned_preview_link = true;
+    // Because we aren't actually returning a PreviewLink, we don't need to include this config!
+    // private static bool $show_unversioned_preview_link = true;
 
     public function getCMSFields()
     {
-        // Adding a buttong like this is a bit of a hack - for now probably better to use something like https://github.com/lekoala/silverstripe-cms-actions
         $fields = parent::getCMSFields();
         $admin = PdfAdmin::singleton();
         $previewLink = Controller::join_links(
@@ -41,13 +41,12 @@ class Client extends DataObject implements CMSPreviewable
             'cmsPreview',
             $this->ID
         );
-        $previewBtn = FormAction::create('pdfs-btn', 'Show PDFs')
-            ->addExtraClass('btn-info js-client-preview-pdfs')
+        // This hidden field holds data needed by client-preview-pdf.js
+        $previewData = HiddenField::create('pdfs-data')
+            ->addExtraClass('js-preview-data')
             ->setAttribute('data-preview-url', $previewLink)
-            ->setAttribute('data-text-alternate', 'Close PDFs')
-            ->setAttribute('type', 'button')
-            ->setUseButtonTag(true);
-        $fields->add($previewBtn);
+            ->setAttribute('data-ids', json_encode($this->Pdfs()->map('ID', 'Title')->toArray()));
+        $fields->add($previewData);
         return $fields;
     }
 
@@ -74,8 +73,8 @@ class Client extends DataObject implements CMSPreviewable
 
     public function PreviewLink($action = null): ?string
     {
-        // By default, don't preview anything at all. The preview panel will be used to display the PDFs
-        // but the user will have to manually activate such a preview.
+        // By default, don't preview anything at all. The preview panel will be used to display the PDFs.
+        // See client-preview-pdfs.js
         return null;
     }
 
