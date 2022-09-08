@@ -64,5 +64,8 @@
     "prefer-stable": true,
     "provide": {
         "silverstripe/recipe-core": "4.11.0"
+    },
+    "require-dev": {
+        "dnadesign/silverstripe-populate": "^2.1"
     }
 }

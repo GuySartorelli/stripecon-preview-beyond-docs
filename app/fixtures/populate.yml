@@ -1,0 +1,256 @@
+# These fixtures were generated using https://github.com/chrispenny/silverstripe-data-object-to-fixture with minimal modification
+SilverStripe\SiteConfig\SiteConfig:
+  1:
+    Title: 'CMS Preview - Beyond the documentation'
+    Tagline: null
+
+SilverStripe\Assets\Image:
+  silverstripe:
+    Filename: assets/silverstripe.png
+    PopulateFileFrom: app/fixtures/files/silverstripe.png
+    ID: 2
+  profileimage:
+    Filename: assets/profile-image.jpeg
+    PopulateFileFrom: app/fixtures/files/profile-image.jpeg
+    ID: 4
+
+SilverStripe\Assets\File:
+  pdf1:
+    Filename: assets/silverstripe1.pdf
+    PopulateFileFrom: app/fixtures/files/silverstripe1.pdf
+  pdf2:
+    Filename: assets/silverstripe2.pdf
+    PopulateFileFrom: app/fixtures/files/silverstripe2.pdf
+
+DNADesign\Elemental\Models\ElementalArea:
+  15:
+    OwnerClassName: Page
+  1:
+    OwnerClassName: Page
+  11:
+    OwnerClassName: App\PerDocs\OnPage\BooksPage
+  21:
+    OwnerClassName: SilverStripe\CMS\Model\RedirectorPage
+  19:
+    OwnerClassName: Page
+  13:
+    OwnerClassName: App\BeyondDocs\AdminOrPage\PropertyPage
+  26:
+    OwnerClassName: SilverStripe\CMS\Model\SiteTree
+  17:
+    OwnerClassName: Page
+  27:
+    OwnerClassName: Page
+
+DNADesign\Elemental\Models\ElementContent:
+  9:
+    Title: 'Talking points'
+    ShowTitle: 0
+    Sort: 1
+    HTML: "<div class=\"captionImage left\" style=\"width: 180px;\">[image src=\"/assets/profile-image.jpeg\" id=\"4\" width=\"180\" height=\"180\" class=\"left ss-htmleditorfield-file image\"]<p class=\"caption left\">You might recognise me from this profile image</p>\n</div><h2>Who am I?</h2><ul><li>Developing websites and web applications with Silverstripe CMS since 2019</li>\n<li>Joined Silverstripe as Senior Product Developer in March this year</li>\n<li>Took the CMS preview panel and made it more malleable</li>\n</ul><p> </p><p> </p><p> </p><h2>What is this talk about?</h2><ul><li>What you get out of the box\n<ul><li>before vs after 4.11.0</li>\n</ul></li>\n<li>What scenarios the documentation covers</li>\n<li>Some cool stuff you can do that isn't covered by documentation\n<ul><li>DataObjects with more than one editing context</li>\n<li>Pdfs</li>\n<li>Previewing records directly from a GridField</li>\n<li>Controlling the preview panel with javascript</li>\n</ul></li>\n<li>Current limitations of the CMS preview panel</li>\n</ul><p>All of the demo code including fixtures for the content is available at <a rel=\"noopener noreferrer\" href=\"https://github.com/GuySartorelli/stripecon-preview-beyond-docs\" target=\"_blank\">https://github.com/GuySartorelli/stripecon-preview-beyond-docs</a> - please have a play and steal the code if it's useful to you.</p>"
+    ParentID: '=>DNADesign\Elemental\Models\ElementalArea.15'
+  1:
+    Title: 'Talking points'
+    ShowTitle: 0
+    Sort: 1
+    HTML: "<h2>What you used to get out of the box</h2><ul><li>Preview panel is available for Versioned objects which implement CMSPreviewable</li>\n<li>Only available in CMSMain</li>\n<li>Basically, only available for pages in the pages section</li>\n</ul><h2>What you get as of 4.11.0</h2><ul><li>All SiteTree (i.e. page) objects are still previewable.</li>\n<li>Elemental blocks are previewable even if they aren't inline-editable!\n<ul><li>They inherit the preview link from their parent. If their parent doesn't implement the CMSPreviewable interface, the block isn't previewable.</li>\n</ul></li>\n<li>All subclasses of LeftAndMain (theoretically) support using the preview panel for CMSPreviewable objects\n<ul><li>Only <em>really</em> tested with CMSMain and ModelAdmin</li>\n</ul></li>\n</ul>"
+    ParentID: '=>DNADesign\Elemental\Models\ElementalArea.1'
+  7:
+    Title: 'Talking points'
+    ShowTitle: 0
+    Sort: 1
+    HTML: "<ul><li>The <a rel=\"noopener noreferrer\" href=\"https://docs.silverstripe.org/en/4/developer_guides/customising_the_admin_interface/preview/#enabling-preview-for-dataobjects-which-belong-to-a-page\" target=\"_blank\">\"Enabling preview for DataObjects which belong to a page\"</a> section in the documentation makes it very clear how to enable previewing a DataObject which belongs to a page.</li>\n<li>This implementation is essentially the same as elemental blocks.\n<ul><li>It uses the preview link from the page.</li>\n<li>It assumes a has_one relation from the previewable object to the page (i.e. Book has_one Page)</li>\n</ul></li>\n<li>Main points (for any previewable object):\n<ul><li>implements the CMSPreviewable interface</li>\n<li>has config to show the 'state' buttons<br>(draft and live if Versioned, or just the unversioned one otherwise)</li>\n<li>PreviewLink() returns a link to the content which should be displayed<br>(in this case it's just a link to the page with an anchor appended)</li>\n</ul></li>\n</ul>"
+    ParentID: '=>DNADesign\Elemental\Models\ElementalArea.11'
+  11:
+    Title: 'Talking points'
+    ShowTitle: 0
+    Sort: 1
+    HTML: "<ul><li>Sometimes you have models which can be managed in a model admin <em>or</em> on a page</li>\n<li>It would be nice for the preview to match the current admin context</li>\n<li>The documentation only covers scenarios for a single context</li>\n<li>The implementation for the page and admin are the same as shown in the documentation - the only change is in the model itself</li>\n</ul>"
+    ParentID: '=>DNADesign\Elemental\Models\ElementalArea.13'
+  10:
+    Title: 'Talking points'
+    ShowTitle: 0
+    Sort: 1
+    HTML: "<ul><li>There's no clean way to make some model from a vendor module previewable\n<ul><li>You'd have to subclass the model, have your subclass implement CMSPreviewable, and replace the old model via injector</li>\n<li>If anything subclasses the original model, it won't inherit ability to preview from your replacement</li>\n</ul></li>\n<li>It can be a pain implementing CMSEditLink - especially for nested gridfields.\n<ul><li>It's especially a pain if you want to include the model in a module, in which case who knows what the 'canonical' edit link should be</li>\n</ul></li>\n<li>The javascript API for the preview panel isn't well documented and requires using some weird underscore-prefixed (intended to be private?) functions to do anything worthwhile</li>\n</ul>"
+    ParentID: '=>DNADesign\Elemental\Models\ElementalArea.17'
+
+Page:
+  8:
+    URLSegment: home
+    Title: Introduction
+    MenuTitle: Introduction
+    Content: null
+    ShowInMenus: 1
+    Sort: 1
+    ElementalAreaID: '=>DNADesign\Elemental\Models\ElementalArea.15'
+  1:
+    URLSegment: out-of-the-box
+    Title: 'Out of the box'
+    MenuTitle: 'Out of the box'
+    ShowInMenus: 1
+    Sort: 2
+    ElementalAreaID: '=>DNADesign\Elemental\Models\ElementalArea.1'
+  9:
+    URLSegment: current-limitations
+    Title: 'Current limitations'
+    MenuTitle: 'Current limitations'
+    Content: null
+    ShowInMenus: 1
+    Sort: 8
+    ElementalAreaID: '=>DNADesign\Elemental\Models\ElementalArea.17'
+  15:
+    CanViewType: Inherit
+    CanEditType: Inherit
+    Version: 3
+    URLSegment: thank-you
+    Title: 'Thank you'
+    MenuTitle: 'Thank you'
+    Content: null
+    MetaDescription: null
+    ExtraMeta: null
+    ShowInMenus: 1
+    ShowInSearch: 1
+    Sort: 11
+    HasBrokenFile: 0
+    HasBrokenLink: 0
+    ReportClass: null
+    ElementalAreaID: '=>DNADesign\Elemental\Models\ElementalArea.27'
+
+SilverStripe\CMS\Model\RedirectorPage:
+  10:
+    URLSegment: in-a-modeladmin
+    Title: 'Go to Product Admin'
+    MenuTitle: 'Previewing a DataObject in a ModelAdmin'
+    Content: null
+    ShowInMenus: 1
+    Sort: 4
+    RedirectionType: Internal
+    ElementalAreaID: '=>DNADesign\Elemental\Models\ElementalArea.21'
+  11:
+    URLSegment: previewing-a-dataobject-which-acts-like-a-page
+    Title: 'Go to Region Admin'
+    MenuTitle: 'Previewing a DataObject which acts like a page'
+    Content: null
+    ShowInMenus: 1
+    Sort: 5
+    RedirectionType: Internal
+    ElementalAreaID: '=>DNADesign\Elemental\Models\ElementalArea.19'
+  14:
+    URLSegment: new-page
+    Title: 'Go to Pdf Admin'
+    MenuTitle: 'What else can I do with it?'
+    Content: null
+    ShowInMenus: 1
+    Sort: 7
+    RedirectionType: Internal
+    ElementalAreaID: '=>DNADesign\Elemental\Models\ElementalArea.26'
+
+App\PerDocs\OnPage\BooksPage:
+  6:
+    URLSegment: on-a-page
+    Title: 'Previewing a DataObject on a page'
+    MenuTitle: 'Previewing a DataObject on a page'
+    Content: null
+    ShowInMenus: 1
+    Sort: 3
+    ElementalAreaID: '=>DNADesign\Elemental\Models\ElementalArea.11'
+
+App\PerDocs\OnPage\Book:
+  1:
+    Title: Book1
+    AuthorName: 'Author Goes Here'
+    Genre: 'Some genre'
+    ParentID: '=>App\PerDocs\OnPage\BooksPage.6'
+  2:
+    Title: Book2
+    AuthorName: 'Some other author'
+    Genre: 'Another genre here'
+    ParentID: '=>App\PerDocs\OnPage\BooksPage.6'
+
+App\BeyondDocs\AdminOrPage\PropertyPage:
+  7:
+    URLSegment: multiple-contexts
+    Title: 'What if I edit my model in two contexts?'
+    MenuTitle: 'What if I edit my model in two contexts?'
+    Content: null
+    ShowInMenus: 1
+    Sort: 6
+    ElementalAreaID: '=>DNADesign\Elemental\Models\ElementalArea.13'
+
+App\BeyondDocs\AdminOrPage\Property:
+  2:
+    Title: 'Some model'
+    Address: '11 address st'
+    TheOwner: 'Right here'
+    Pages:
+      - '=>App\BeyondDocs\AdminOrPage\PropertyPage.7'
+
+App\PerDocs\CustomAdmin\Product:
+  1:
+    Name: 'Some product'
+    ProductCode: '112233'
+    Price: !!float 15
+    Content: "<h1>CMS Preview - Beyond the documentation</h1><h2>Previewing a DataObject in a ModelAdmin</h2><ul><li>This is very clearly spelled out in the <a rel=\"noopener noreferrer\" href=\"https://docs.silverstripe.org/en/4/developer_guides/customising_the_admin_interface/preview/#enabling-preview-for-dataobjects-in-a-modeladmin\" target=\"_blank\">\"Enabling preview for DataObjects in a ModelAdmin\"</a> section of the docs</li>\n<li>Your ModelAdmin subclass needs an action, from which it will return the markup to be previewed</li>\n<li>Your DataObject returns a link to that action in PreviewLink()</li>\n<li>CMSEditLink() is pretty straight forward for this scenario</li>\n</ul>"
+
+App\PerDocs\ModelAsPage\Region:
+  2:
+    Title: 'Previewing a DataObject which acts like a page'
+    URLSegment: my-region
+    Content: "<ul><li>The documentation for this one is spread out a bit\n<ul><li>There's <a rel=\"noopener noreferrer\" href=\"https://www.silverstripe.org/learn/lessons/v4/controller-actions-dataobjects-as-pages-1\" target=\"_blank\">a lesson</a> that walks you through setting up the model and how to set up routing for it, etc</li>\n<li>My demo code has taken a different approach than the lesson does - check that out later if you're interested</li>\n<li>The <a rel=\"noopener noreferrer\" href=\"https://docs.silverstripe.org/en/4/developer_guides/customising_the_admin_interface/preview/\" target=\"_blank\">preview documentation</a> mentions a couple of times what modifications you could make for this scenario</li>\n</ul></li>\n<li>Basically boils down to having PreviewLink() just return $this->Link()</li>\n<li>There's no need for a new action in your ModelAdmin since the preview is just the same as the front-end</li>\n</ul>"
+
+App\BeyondDocs\Pdf\PdfTemplate:
+  1:
+    Name: 'Beyond the docs - pdfs on the fly'
+    ShowTitleInHeader: 1
+    ShowPageNumbers: 1
+    BGColor: '#005AE1'
+    FGColor: '#FFFFFF'
+    Content: "<h1>CMS Preview - beyond the documentation</h1><p>[image src=\"/assets/silverstripe.png\" id=\"2\" width=\"128\" height=\"128\" class=\"leftAlone ss-htmleditorfield-file image\"]</p><h2>Previewing PDFs on the fly</h2><ul><li>I'm using wkhtmltopdf (via <a rel=\"noopener noreferrer\" href=\"https://github.com/mikehaertl/phpwkhtmltopdf\" target=\"_blank\">mikehaertl/phpwkhtmltopdf</a>) to generate the PDF on demand</li>\n<li>This is <em>very</em> similar to the other ModelAdmin examples you've seen so far</li>\n<li>The admin's cmsPreview() method asks phpwkhtmltopdf to send the PDF content directly to the browser. That's it.</li>\n</ul>"
+    DataSourceClass: SilverStripe\Security\Member
+  2:
+    Name: 'Second one'
+    ShowTitleInHeader: 0
+    ShowPageNumbers: 0
+    Content: "<h1>CMS Preview - beyond the documentation</h1><h2>Previewing records from a GridField</h2><ul><li>You don't need any project-specific code for this one, I've made a module</li>\n<li>Check out <a rel=\"noopener noreferrer\" href=\"http://guysartorelli/silverstripe-gridfield-preview\" target=\"_blank\">https://github.com/GuySartorelli/silverstripe-gridfield-preview</a> - let me know how it goes</li>\n<li>It doesn't currently support gridfields in another record - just in ModelAdmin directly</li>\n</ul>"
+    DataSourceClass: App\BeyondDocs\Pdf\Client
+
+App\BeyondDocs\Pdf\Client:
+  3:
+    Name: 'Some client'
+    PhoneNumber: '02123456789'
+    Address: "11 Address Street\r\nWellington\r\nNew Zealand"
+    Comments: 'According to all known laws of aviation, there is no way that a bee should be able to fly. Its wings are too small to get its fat little body off the ground. The bee, of course, flies anyway. Because bees don’t care what humans think is impossible.” SEQ. 75 - “INTRO TO BARRY” INT. BENSON HOUSE - DAY ANGLE ON: Sneakers on the ground. Camera PANS UP to reveal BARRY BENSON’S BEDROOM ANGLE ON: Barry’s hand flipping through different sweaters in his closet. BARRY Yellow black, yellow black, yellow black, yellow black, yellow black, yellow black...oohh, black and yellow... ANGLE ON: Barry wearing the sweater he picked, looking in the mirror. BARRY (CONT’D) Yeah, let’s shake it up a little. He picks the black and yellow one. He then goes to the sink, takes the top off a CONTAINER OF HONEY, and puts some honey into his hair. He squirts some in his mouth and gargles. Then he takes the lid off the bottle, and rolls some on like deodorant. CUT TO: INT. BENSON HOUSE KITCHEN - CONTINUOUS Barry’s mother, JANET BENSON, yells up at Barry. JANET BENSON Barry, breakfast is ready! CUT TO: "Bee Movie" - JS REVISIONS 8/13/07 1. INT. BARRY’S ROOM - CONTINUOUS BARRY Coming! SFX: Phone RINGING. Barry’s antennae vibrate as they RING like a phone. Barry’s hands are wet. He looks around for a towel. BARRY (CONT’D) Hang on a second! He wipes his hands on his sweater, and pulls his antennae down to his ear and mouth. BARRY (CONT''D) Hello? His best friend, ADAM FLAYMAN, is on the other end. ADAM Barry? BARRY Adam? ADAM Can you believe this is happening? BARRY Can’t believe it. I’ll pick you up. Barry sticks his stinger in a sharpener. SFX: BUZZING AS HIS STINGER IS SHARPENED. He tests the sharpness with his finger. SFX: Bing. BARRY (CONT’D) Looking sharp.'
+    Pdfs:
+      - '=>SilverStripe\Assets\File.pdf1'
+      - '=>SilverStripe\Assets\File.pdf2'
+
+
+## Userform block
+DNADesign\ElementalUserForms\Model\ElementForm:
+    8:
+        Title: 'Non-inline-editable block (demo)'
+        ShowTitle: 1
+        Sort: 2
+        ParentID: '=>DNADesign\Elemental\Models\ElementalArea.1'
+SilverStripe\UserForms\Model\EditableFormField\EditableFormStep:
+    3:
+        Name: EditableFormStep_8ac7c
+        Title: 'First Page'
+        Sort: 1
+        ParentID: '=>DNADesign\ElementalUserForms\Model\ElementForm.8'
+        ParentClass: 'DNADesign\ElementalUserForms\Model\ElementForm'
+SilverStripe\UserForms\Model\EditableFormField\EditableTextField:
+    4:
+        Name: EditableTextField_db243
+        Title: 'Field 1'
+        Sort: 2
+        ParentID: '=>DNADesign\ElementalUserForms\Model\ElementForm.8'
+        ParentClass: 'DNADesign\ElementalUserForms\Model\ElementForm'
+SilverStripe\UserForms\Model\EditableFormField\EditableCheckbox:
+    5:
+        Name: EditableTextField_76749
+        Title: 'Field 2'
+        Sort: 3
+        ParentID: '=>DNADesign\ElementalUserForms\Model\ElementForm.8'
+        ParentClass: 'DNADesign\ElementalUserForms\Model\ElementForm'
+

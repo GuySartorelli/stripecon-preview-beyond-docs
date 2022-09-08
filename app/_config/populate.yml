@@ -1,0 +1,11 @@
+---
+Name: project-populate-fixtures
+---
+
+DNADesign\Populate\Populate:
+  include_yaml_fixtures:
+    - 'app/fixtures/populate.yml'
+  truncate_objects:
+    - Page
+    - SilverStripe\SiteConfig\SiteConfig
+    - SilverStripe\Assets\File
