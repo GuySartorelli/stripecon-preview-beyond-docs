@@ -12,12 +12,8 @@ class PropertyPage extends Page
 {
     private static string $table_name = 'App_AdminOrPage_PropertyPage';
 
-    private static array $has_many = [
+    private static array $many_many = [
         'Properties' => Property::class,
-    ];
-
-    private static array $owns = [
-        'Properties',
     ];
 
     public function getCMSFields()

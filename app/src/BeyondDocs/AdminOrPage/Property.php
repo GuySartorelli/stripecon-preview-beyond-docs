@@ -2,6 +2,7 @@
 
 namespace App\BeyondDocs\AdminOrPage;
 
+use SilverStripe\CMS\Controllers\CMSMain;
 use SilverStripe\Control\Controller;
 use SilverStripe\ORM\CMSPreviewable;
 use SilverStripe\ORM\DataObject;
@@ -18,8 +19,8 @@ class Property extends DataObject implements CMSPreviewable
         'TheOwner' => 'Varchar(255)',
     ];
 
-    private static array $has_one = [
-        'Parent' => PropertyPage::class,
+    private static array $many_many = [
+        'Pages' => PropertyPage::class,
     ];
 
     private static array $summary_fields = [
@@ -39,36 +40,36 @@ class Property extends DataObject implements CMSPreviewable
     public function getCMSFields()
     {
         $fields = parent::getCMSFields();
-        $fields->removeByName('ParentID');
+        $fields->removeByName('Pages');
         return $fields;
     }
 
     public function PreviewLink($action = null): ?string
     {
+        if (($controller = Controller::curr()) instanceof CMSMain) {
+            return $this->getPagePreviewLink($controller, $action);
+        }
+        return $this->getControllerPreviewLink();
+    }
+
+    private function getControllerPreviewLink(): string
+    {
         if (!$this->isInDB()) {
             return null;
         }
-        if (($controller = Controller::curr()) instanceof PropertyAdmin) {
-            return $this->getControllerPreviewLink($controller);
-        }
-        return $this->getPagePreviewLink($action);
-    }
-
-    private function getControllerPreviewLink(Controller $controller): string
-    {
         return Controller::join_links(
-            $controller->Link(str_replace('\\', '-', $this->ClassName)),
+            PropertyAdmin::singleton()->Link(str_replace('\\', '-', $this->ClassName)),
             'cmsPreview',
             $this->ID
         );
     }
 
-    private function getPagePreviewLink(?string $action): ?string
+    private function getPagePreviewLink(CMSMain $controller, ?string $action): ?string
     {
-        // Let the page know it's being previewed from a DataObject edit form (see BooksPage::MetaTags())
-        $action = $action . '?DataObjectPreview=' . mt_rand();
-        // Scroll the preview straight to where the object sits on the page.
-        if ($page = $this->Parent()) {
+        if ($page = $controller->currentPage()) {
+            // Let the page know it's being previewed from a DataObject edit form (see BooksPage::MetaTags())
+            $action = $action . '?DataObjectPreview=' . mt_rand();
+            // Scroll the preview straight to where the object sits on the page.
             $link = $page->Link($action) . '#' . $this->getAnchor();
             return $link;
         }
