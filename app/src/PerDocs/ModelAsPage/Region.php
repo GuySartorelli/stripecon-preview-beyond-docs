@@ -140,6 +140,7 @@ class Region extends DataObject implements CMSPreviewable
     public function Link(?string $action = null): ?string
     {
         if ($this->isInDB()) {
+            // e.g. /regions/my-region
             return Controller::join_links('regions', $this->URLSegment, $action);
         }
         return null;
