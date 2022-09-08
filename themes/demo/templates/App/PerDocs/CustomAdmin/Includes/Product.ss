@@ -1,4 +1,5 @@
 <div class="product">
+    <div class="content">$Content</div>
     <dl class="product-list">
         <dt>Name</dt>
         <dd>$Name</dd>

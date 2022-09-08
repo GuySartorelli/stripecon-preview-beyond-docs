@@ -3,7 +3,7 @@
 	<article>
 		<h1>$Title</h1>
 		<div class="content">
-            $URLSegment
+            $Content
         </div>
 	</article>
 </div>

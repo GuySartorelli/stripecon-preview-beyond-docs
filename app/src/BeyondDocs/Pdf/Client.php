@@ -16,6 +16,9 @@ class Client extends DataObject implements CMSPreviewable
 
     private static $db = [
         'Name' => 'Varchar(255)',
+        'PhoneNumber' => 'Varchar(255)',
+        'Address' => 'Text',
+        'Comments' => 'Text',
     ];
 
     private static $many_many = [

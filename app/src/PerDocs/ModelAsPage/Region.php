@@ -3,6 +3,7 @@
 namespace App\PerDocs\ModelAsPage;
 
 use Page;
+use SilverStripe\CMS\Forms\SiteTreeURLSegmentField;
 use SilverStripe\Control\ContentNegotiator;
 use SilverStripe\Control\Controller;
 use SilverStripe\Control\Director;
@@ -21,6 +22,7 @@ class Region extends DataObject implements CMSPreviewable
     private static array $db = [
         'Title' => 'Varchar(255)',
         'URLSegment' => 'Varchar(255)',
+        'Content' => 'HTMLText',
     ];
 
     private static array $casting = [
@@ -39,6 +41,18 @@ class Region extends DataObject implements CMSPreviewable
         'Title',
         'URLSegment',
     ];
+
+    public function getCMSFields()
+    {
+        $fields = parent::getCMSFields();
+        $fields->replaceField(
+            'URLSegment',
+            SiteTreeURLSegmentField::create('URLSegment', $this->fieldLabel('URLSegment'))
+            ->setURLPrefix('regions/')
+            ->setURLSuffix('?stage=Stage')
+        );
+        return $fields;
+    }
 
     /**
      * This is taken straight from SiteTree::onBeforeWrite() and trimmed down a bit.

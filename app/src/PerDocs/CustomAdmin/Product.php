@@ -16,7 +16,8 @@ class Product extends DataObject implements CMSPreviewable
     private static array $db = [
         'Name' => 'Varchar',
         'ProductCode' => 'Varchar',
-        'Price' => 'Currency'
+        'Price' => 'Currency',
+        'Content' => 'HTMLText',
     ];
 
     private static array $summary_fields = [
