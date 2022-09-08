@@ -10,7 +10,9 @@ class ProductAdmin extends ModelAdmin
 {
     private static $url_segment = 'product-admin';
 
-    private static $menu_title = 'Product Admin';
+    private static $menu_title = 'Product Admin (per docs)';
+
+    private static $menu_priority = -1;
 
     private static $url_handlers = [
         '$ModelClass/cmsPreview/$ID' => 'cmsPreview',

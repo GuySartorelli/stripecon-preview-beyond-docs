@@ -10,7 +10,9 @@ class PdfAdmin extends ModelAdmin
 {
     private static string $url_segment = 'pdf-admin';
 
-    private static string $menu_title = 'Pdf Admin';
+    private static string $menu_title = 'Pdf Admin (beyond docs)';
+
+    private static $menu_priority = -4;
 
     private static array $url_handlers = [
         '$ModelClass/cmsPreview/$ID/$ExtraID' => 'cmsPreview',

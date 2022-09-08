@@ -10,7 +10,9 @@ class PropertyAdmin extends ModelAdmin
 {
     private static $url_segment = 'property-admin';
 
-    private static $menu_title = 'Property Admin';
+    private static $menu_title = 'Property Admin (beyond docs)';
+
+    private static $menu_priority = -3;
 
     private static $url_handlers = [
         '$ModelClass/cmsPreview/$ID' => 'cmsPreview',
