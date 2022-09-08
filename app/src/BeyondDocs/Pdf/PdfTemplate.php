@@ -19,6 +19,11 @@ class PdfTemplate extends DataObject implements CMSPreviewable
         'Name' => 'Varchar(255)',
         'ShowTitleInHeader' => 'Boolean',
         'ShowPageNumbers' => 'Boolean',
+        // You'd want to be a little fancy here and use a colour picker module instead of just a text field.
+        // You'd probably also only want colour on the splash page which maybe you'd have a separate template
+        // for or something.
+        'BGColor' => 'Varchar',
+        'FGColor' => 'Varchar',
         'Content' => 'HTMLText',
         'DataSourceClass' => 'Varchar',
     ];
@@ -59,6 +64,23 @@ class PdfTemplate extends DataObject implements CMSPreviewable
             'DataSourceClass',
         ]));
         return $validator;
+    }
+
+    public function getContent()
+    {
+        // This is a nasty way to get the styling in there but I just wanted my demo to be pretty so :p
+        $content = $this->getField('Content');
+        $style = '';
+        if ($this->BGColor) {
+            $style .= "body{background-color:$this->BGColor;}";
+        }
+        if ($this->FGColor) {
+            $style .= "body{color:$this->FGColor;}a{color:$this->FGColor;}";
+        }
+        if ($style) {
+            $content .= "<style>$style</style>";
+        }
+        return $content;
     }
 
     public function getPdfOptions(): array
