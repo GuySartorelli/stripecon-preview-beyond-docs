@@ -16,11 +16,11 @@ SilverStripe\Assets\Image:
 
 SilverStripe\Assets\File:
   pdf1:
-    Filename: assets/silverstripe1.pdf
-    PopulateFileFrom: app/fixtures/files/silverstripe1.pdf
+    Filename: assets/client-pdf1.pdf
+    PopulateFileFrom: app/fixtures/files/client-pdf1.pdf
   pdf2:
-    Filename: assets/silverstripe2.pdf
-    PopulateFileFrom: app/fixtures/files/silverstripe2.pdf
+    Filename: assets/client-pdf2.pdf
+    PopulateFileFrom: app/fixtures/files/client-pdf2.pdf
 
 DNADesign\Elemental\Models\ElementalArea:
   15:
