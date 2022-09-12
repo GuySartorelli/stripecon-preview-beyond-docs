@@ -3,6 +3,7 @@
 namespace {
 
     use SilverStripe\CMS\Controllers\ContentController;
+    use SilverStripe\View\Requirements;
 
     class PageController extends ContentController
     {
@@ -25,6 +26,8 @@ namespace {
 
         protected function init()
         {
+            // I was too lazy to add a css file just for this, and didn't have time to do proper theming.
+            Requirements::customCSS('body{font-size:20px;}');
             parent::init();
             // You can include any CSS or JS required by your project here.
             // See: https://docs.silverstripe.org/en/developer_guides/templates/requirements/

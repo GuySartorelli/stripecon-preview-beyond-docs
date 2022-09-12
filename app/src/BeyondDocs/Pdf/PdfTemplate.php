@@ -70,16 +70,21 @@ class PdfTemplate extends DataObject implements CMSPreviewable
     {
         // This is a nasty way to get the styling in there but I just wanted my demo to be pretty so :p
         $content = $this->getField('Content');
-        $style = '';
+        $style = ['body' => ['font-size:24px;']];
         if ($this->BGColor) {
-            $style .= "body{background-color:$this->BGColor;}";
+            $style['body'][] = "background-color:$this->BGColor;";
         }
         if ($this->FGColor) {
-            $style .= "body{color:$this->FGColor;}a{color:$this->FGColor;}";
+            $style['body'][] = "color:$this->FGColor;";
+            $style['a'][] = 'color:$this->FGColor;';
         }
-        if ($style) {
-            $content .= "<style>$style</style>";
+        $css = '';
+        foreach ($style as $elem => $parts) {
+            $css .= "$elem{";
+            $css .= implode($parts);
+            $css .= '}';
         }
+        $content .= "<style>$css</style>";
         return $content;
     }
 
