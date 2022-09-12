@@ -15,7 +15,7 @@ $validator = PasswordValidator::create();
 // Settings are registered via Injector configuration - see passwords.yml in framework
 Member::set_password_validator($validator);
 
-// Remove all the admin sections I don't care about
+// Remove all the admin sections I don't care about for this demo.
 $removeAdmins = [
     ArchiveAdmin::class,
     AssetAdmin::class,

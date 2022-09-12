@@ -8,6 +8,9 @@ use SilverStripe\Forms\GridField\GridField;
 use SilverStripe\Forms\GridField\GridFieldConfig_RelationEditor;
 use SilverStripe\View\Parsers\HTML4Value;
 
+/**
+ * There's nothing special happening here - it's as per documentation
+ */
 class PropertyPage extends Page
 {
     private static string $table_name = 'App_AdminOrPage_PropertyPage';

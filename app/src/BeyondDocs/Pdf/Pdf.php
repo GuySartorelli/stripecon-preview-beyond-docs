@@ -16,6 +16,8 @@ use RuntimeException;
 trait Pdf
 {
     /**
+     * Send the PDF directly to be rendered inline in the browser
+     *
      * @throws RuntimeException if the pdf couldn't render
      */
     public function sendToBrowser()
@@ -27,6 +29,10 @@ trait Pdf
         }
     }
 
+    /**
+     * Prepare a PDF with its content, name, options etc ready for outputting to file
+     * or to the browser.
+     */
     protected function preparePdf(): WkhtmltoPdf
     {
         $options = array_merge([
@@ -35,16 +41,23 @@ trait Pdf
         ], $this->getPdfOptions());
         $pdfHandler = new WkhtmltoPdf($options);
 
-        $pdfHandler->addPage($this->parseContent($this->Content));
+        $pdfHandler->addPage($this->parseContent($this->Content ?? ''));
 
         return $pdfHandler;
     }
 
+    /**
+     * Get options to be passed into wkhtmltopdf (see https://wkhtmltopdf.org/usage/wkhtmltopdf.txt)
+     * This is to be overridden in classes that use this trait.
+     */
     public function getPdfOptions(): array
     {
         return [];
     }
 
+    /**
+     * Parse out and prepare raw content into its final HTML markup for wkhtml to process.
+     */
     private function parseContent(string $content): string
     {
         // NOTE: Somewhere in here you'd likely have some custom logic to convert variables in the content
@@ -54,9 +67,14 @@ trait Pdf
         return HTTP::absoluteURLs($content);
     }
 
+    /**
+     * Rewrite [img] shortcodes into <img> tags with base64 encoded images.
+     * This ensures that images are baked into the PDF instead of requiring internet access to view images within it.
+     */
     private function encodeImages(string $content): string
     {
         // Note: You could do all this using a subclass of ImageShortcodeProvider but this was just simpler for this example.
+        // There will be edge cases that aren't caught though so you should do it properly if you do this in a project.
         return preg_replace_callback('/\[image\s+[^\]]*?id="(?<id>\d+)".*?\]/i', function($match) {
             $id = (int)$match['id'];
             /** @var Image $image */

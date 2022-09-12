@@ -20,7 +20,6 @@ It includes fixtures for all of the content I used in that demonstration.
 - Preview objects in a ModelAdmin directly from the gridfield (Pdf Admin)
 - Preview relations of an object from a js-injected dropdown (Pdf Admin -> Clients)
 
-## Stretch goals
+## Stretch goals (not done)
 
 - Make the demonstrations look nice (theming)
-- Add lots of nice documentation in the code (phpdocs mostly) to help people navigate the examples

@@ -22,6 +22,9 @@ namespace {
          */
         private static $hasSetDefaults = false;
 
+        /**
+         * Ignore this - it's just here to scaffold the demo content, and isn't part of any of the actual preview functionality.
+         */
         public function requireDefaultRecords()
         {
             // Populate is silly and thinks all files are images... so we have to tell it pdf is a file temporarily.

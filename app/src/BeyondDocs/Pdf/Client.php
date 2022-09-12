@@ -54,7 +54,8 @@ class Client extends DataObject implements CMSPreviewable
     }
 
     /**
-     * Send the PDF represented by $id in the Pdfs relation directly to the browser.
+     * Send the PDF represented by $id in the Pdfs relation to be rendered inline in the browser.
+     *
      * @throws InvalidArgumentException if $id doesn't refer to an item in the Pdfs relation, or it
      * doesn't have a file in the filesystem.
      */

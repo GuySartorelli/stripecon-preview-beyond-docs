@@ -6,6 +6,9 @@ use SilverStripe\Admin\ModelAdmin;
 use SilverStripe\ORM\FieldType\DBHTMLText;
 use SilverStripe\View\SSViewer;
 
+/**
+ * There's nothing special happening here - it's as per documentation
+ */
 class PropertyAdmin extends ModelAdmin
 {
     private static $url_segment = 'property-admin';

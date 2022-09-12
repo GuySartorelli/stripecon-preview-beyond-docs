@@ -46,12 +46,17 @@ class Property extends DataObject implements CMSPreviewable
 
     public function PreviewLink($action = null): ?string
     {
+        // If the controller is CMSMain (aka pages section), preview in the context of the page being edited.
         if (($controller = Controller::curr()) instanceof CMSMain) {
             return $this->getPagePreviewLink($controller, $action);
         }
+        // For literally any other context, only render the template for this object without any external context.
         return $this->getControllerPreviewLink();
     }
 
+    /**
+     * This is effectively the exact same implementation as is documented for modeladmin previews.
+     */
     private function getControllerPreviewLink(): string
     {
         if (!$this->isInDB()) {
@@ -64,6 +69,11 @@ class Property extends DataObject implements CMSPreviewable
         );
     }
 
+    /**
+     * This is effectively the exact same implementation as is documented for previewing objects on a page
+     * EXCEPT we're getting the page from the controller instead of from the relation, since it could
+     * theoretically be ANY page
+     */
     private function getPagePreviewLink(CMSMain $controller, ?string $action): ?string
     {
         if ($page = $controller->currentPage()) {
