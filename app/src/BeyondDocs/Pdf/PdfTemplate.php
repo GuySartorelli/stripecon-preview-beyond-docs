@@ -90,7 +90,12 @@ class PdfTemplate extends DataObject implements CMSPreviewable
 
     public function getPdfOptions(): array
     {
-        $options = [];
+        $options = [
+            'margin-bottom' => 0,
+            'margin-left' => 0,
+            'margin-right' => 0,
+            'margin-top' => 0,
+        ];
         if ($this->ShowPageNumbers) {
             $options['footer-left'] = 'Page [page] of [topage]';
         }
