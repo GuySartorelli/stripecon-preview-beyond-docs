@@ -2,6 +2,8 @@
 
 Please take this code if any of it will be useful to you - the whole point of this is to help people start using the preview panel to help their content authors get a clear indication of what their content will look like (beyond just pages themselves).
 
+Check out [the official documentation](https://docs.silverstripe.org/en/4/developer_guides/customising_the_admin_interface/preview/#php) about the preview panel for additional context.
+
 Basically, if your data has a visual representation you _absolutely_ should be providing a CMS preview for it. It's dead easy and gives a lot of value.
 
 ## Do you want to have play?
