@@ -4,6 +4,7 @@ namespace App\BeyondDocs\AdminOrPage;
 
 use SilverStripe\Admin\ModelAdmin;
 use SilverStripe\ORM\FieldType\DBHTMLText;
+use SilverStripe\View\ArrayData;
 use SilverStripe\View\Requirements;
 use SilverStripe\View\SSViewer;
 
@@ -44,10 +45,12 @@ class PropertyAdmin extends ModelAdmin
         SSViewer::set_themes(SSViewer::config()->get('themes'));
         Requirements::clear();
 
+        // Add in global css/js that would normally be added in the page base template (as needed)
+        Requirements::themedCSS('css/layout.css');
         // Render the preview content
-        // Note that if your template is an include and relies on global css or js, you should
-        // use the Requirements API here to include those
         $preview = $obj->forTemplate();
+        // Wrap preview in proper html, body, etc so Requirements are used
+        $preview = SSViewer::create('PreviewBase')->process(ArrayData::create(['Preview' => $preview]));
 
         // Make sure to set back to backend themes and restore CMS requirements.
         SSViewer::set_themes($oldThemes);
